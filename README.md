@@ -134,3 +134,9 @@ Which produces following errors, when compiled and given to valgrind.
 	==1076470==    still reachable: 0 bytes in 0 blocks
 	==1076470==         suppressed: 0 bytes in 0 blocks
 	==1076470== Rerun with --leak-check=full to see details of leaked memory
+	
+## Git Commands
+
+`git checkout HEAD -- oops.c`
+
+This will reset a single file from your HEAD. Nifty when you have made one change to a file that you don't want to push in a middle of a larger feature.
