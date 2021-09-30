@@ -223,3 +223,11 @@ So, I added line `printf("entity idx %d sprite idx %d\n", entity->idx, entity->s
 
 So, I could say that it happens only with one entity.
 Which led us to conclusion, that it was caused by one variable that was not initialized during startup.
+
+## Git Commands
+
+
+Command | Explanation
+--------|--------
+`git checkout HEAD -- oops.c` | This will reset a single file from your HEAD. Nifty when you have made one change to a file that you don't want to push in a middle of a larger feature.
+`git restore oops.c` | Same, but this will restore file from your local git.
