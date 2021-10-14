@@ -1,240 +1,119 @@
 # beekeepers-guide
-Hi, this is beekeeper's guide to install all necessary school stuff
+Hi, this is beekeeper's guide to install all necessary school stuff. Each chapter is broken down to program folders, where you will find README on the topic.
 
+## For those who plan on using Windows
 
-## How to get Norminette on your desktop
+For those who haven't already noticed, 42 School, is a Unix school. All the school projects are somewhat associated with Linux or OSX. School computers are Macintoshes. All the commands you will see in the courses are run either on Unix. So, if you insist on working on your own laptop, you will need to keep this in mind, why this or that command is not available in Windows. It will be much easier for you, if you just install a virtual computer on your laptop, or perhaps do a dual booting system. Linux in all it's distributions may seem intimidating at first, but once you get a hang of it, it's far more faster to get on track with all the projects.
 
-These instructions assume that you are working on Ubuntu based distribution (ie. Ubuntu, Pop_OS, Linux Mint!) of Linux.
-Guide tested on Ubuntu 18.04, 20.04 and Pop_OS! 21.04.
+## Package manager for OSX
 
-`sudo apt update && sudo apt upgrade`
+To install Homebrew package manager for OSX, you'll need to run
 
-Start by updating your packages. System gets new and updated packages ever so often.
+	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-`sudo apt install build-essential python3-pip python3-venv`
+More info at [Homebrew](https://brew.sh/)
 
-Build essential has more than enough libraries to pull you through the compiling. They include the GNU debugger, g++/GNU compiler collection, and some more tools and libraries that are required. Also install python3 pip package manager and python3 virtual environment package.
+## How to get a ssh key and how to add it to your Github
 
-`python3 -m pip install --upgrade pip setuptools`
+[Github has a great documentation about creating ssh key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent), but I'm going to repeat those!
 
-Install setuptools package. Check
-what `python3 -m` means from python3
-man page.
+First create a ssh key:
 
-`python3 -m venv venv`
+`ssh-keygen -f ~/.ssh/my-key -t ed25519 -C "your_email@example.com"`
 
-This will create a virtual environment the folder you are in.
-https://python-guide-cn.readthedocs.io/en/latest/dev/virtualenvs.html
+More about ssh keys can be found at [ssh.com](https://www.ssh.com/academy/ssh/keygen)
 
-`source venv/bin/activate`
+Option | What it does
+-------|-------------
+`-f` | tells you the output location and name of the file.
+`-t` | option here states the type of the algorithm used in the creation of the key and
+`-C` | is the comment for the file, usually the host of the key.
 
-This will activate the virtual environment, and you will be able to install packages inside this virtual environment, like Norminette.
+Start ssh-agent at background, if it is not already running.
 
-`pip install norminette`
+`eval "$(ssh-agent -s)"`
 
-This will download the latest version of the Norminette.
+To add your new lovely key to your keychain, you'll need to write following command:
 
-`ln -s ~/venv/bin/norminette /usr/local/bin/norminette`
+`ssh-add ~/.ssh/my-key`
 
-We need to add a link to the norminette binary in the local directory, so you can start norminette from your command line.
-Otherwise norminette command would be available inside the virtual environment.
+This tells your `ssh-agent` program to hang in the keychain, so that is available to use.
 
-## How to get school debugger on your desktop
+From here onwards, it's silly to repeat what octocat has said. So, [check these out!](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account)
 
-School machines have `lldb` debugger tool installed on them as a tool. You can read more from
-[here](https://lldb.llvm.org/). Lldb is really powerful debugging tool, which allows you to debug C code line by line,
-and is also at your disposal in exams. Although, it is not only tool available, as
-VSCode and others have excellent debugging tools, I'm going to focus on `lldb`
+## VSCode Shortcuts (originally posted to discord by )
 
-`apt install lldb`
+Command | What it does
+--------|-------------
+cmd/ctrl + k + c | comment selected lines
+cmd/ctrl + k + u | uncomment selected lines
+cmd/ctrl + d | every time you press it, when are in you find&select mode, it will go to next occurance (really useful for changing variable names)
+option/alt + shift + up/down-arrow | copy the line you are on before or after it depending the arrow key you pressed
+option/alt + up/down-arrow | move line up and down
+cmd/ctrl + p | opens a search bar that you can find files (so no need to use mouse for opening files :p)
+cmd/ctrl + shift + p | opens a search bar for multiple commands
+option/alt + shift + f | automatic formatting (if you have installed the norm extension it follows it)
+cmd/ctrl + shift + v | opens markdown file to preview mode, so you can view how it looks like in browser.
 
-You can start debugging your program by writing `lldb a.out`, if your binary name is `a.out`.
-Note that you must compile your program with `-g` flag to see all lines!
+Originally posted by: leila
 
-Most likely you will see that your program has ran successfully, or in scenario
-that it doesn't, you will see the error message.
+## How to get VSCode working like Vim/Emacs at school
+- Install this plug-in to generate school header with
+https://marketplace.visualstudio.com/items?itemName=kube.42header
 
-	Process 1072840 launched:
-	Fail
-	Process 1072840 exited with status = 0 (0x00000000)
+- Match editor settings with school environment (tabs, whitespace etc.) and to render right log-in details in header:
+- Find VS Code settings file at ~/Library/Application Support/Code/User/settings.json
+- Paste following inside the curly bracers:
 
-`lldb a.out Marvin`
+	"42header.username": "smarvin"
+	"42header.email": "smarvin@student.hive.fi",
+	"editor.insertSpaces": false,
+	"editor.renderWhitespace": "all",
+	"files.trimTrailingWhitespace": true,
+	"files.insertFinalNewline": true,
 
-You can give arguments to program by writing them after the command.
+Originally posted by: jkoskela
 
-Command | Explanation
-----|-----
-`b 42` | Add breakpoint to row of a file.
-`b function_i_want_to_debug` | Set the breakpoint to a function.
-`b function_file.c:42` | Define specific row of a file.
-`b` | List active breakpoints.
-`br del 1` | Delete first one in the active breakpoints.
-`p hello` | Print value of variable hello.
-`parray 10 hello` | print 10 values in an array hello.
-`v` | List all variables in function.
+## Emacs tips
+Config | What it does
+-------|-----------
+(add-hook 'before-save-hook 'whitespace-cleanup) | This should take care of whitespace at the beginning of the file, end of lines and multiple empy lines at the end of the file.
+(setq backward-delete-char-untabify-method 'hungry) | You can change the emacs backspace key behaviour when deleting tab characters by adding this.
 
-## How to get valgrind on your desktop
+## Links to interesting topics
 
-Can't figure out where a pesky memory leak is? Aim your lance at [Valgrind](https://www.valgrind.org/). Although `leaks` is a program that is asked to use in evaluations, It'll help you to track down uninitialized values, going off the memory addresses, and much more.
+### Floats
+[Floating point visually explained](https://fabiensanglard.net/floating_point_visually_explained/index.php)
+[Find and fix floating-point problems](https://herbie.uwplse.org/)
 
-- Install valgrind with:
-`sudo apt install valgrind`
+### Vectors and matrices
+[3Blue1Brown: Vectors | Chapter 1, Essence of linear algebra](https://www.youtube.com/watch?v=fNk_zzaMoSs&list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab)
+Originally tipped by: ngontjar
 
-- Start up valgrind by typing
-`valgrind ./a.out`
+[Tracy Profiler. A real time, nanosecond resolution, remote telemetry, hybrid frame and sampling profiler for games and other applications](https://github.com/wolfpld/tracy)
 
-Although valgrind might give you an idea, it might be intimidating at first to read the program output.
-I'm asking for trouble with `a.c`, which has following code:
+## Tutorials
 
-	#include <stdlib.h>
-	#include <unistd.h>
-
-	int main(void)
-	{
-		char *hello;
-		hello = (char*)malloc(18);
-		write(1, hello, 18);
-		return (0);
-	}
-
-When I run the program with these, it produces following errors, when compiled and given to valgrind.
-
-	==1076470== Memcheck, a memory error detector
-	==1076470== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-	==1076470== Using Valgrind-3.17.0 and LibVEX; rerun with -h for copyright info
-	==1076470== Command: ./a.out 2123
-	==1076470==
-	==1076470== Syscall param write(buf) points to uninitialised byte(s)
-	==1076470==    at 0x4973C27: write (write.c:26)
-	==1076470==    by 0x109198: main (main.c:9)
-	==1076470==  Address 0x4a5b040 is 0 bytes inside a block of size 18 alloc'd
-	==1076470==    at 0x4842839: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-	==1076470==    by 0x10917E: main (main.c:8)
-	==1076470==
-	==1076470==
-	==1076470== HEAP SUMMARY:
-	==1076470==     in use at exit: 18 bytes in 1 blocks
-	==1076470==   total heap usage: 1 allocs, 0 frees, 18 bytes allocated
-	==1076470==
-	==1076470== LEAK SUMMARY:
-	==1076470==    definitely lost: 18 bytes in 1 blocks
-	==1076470==    indirectly lost: 0 bytes in 0 blocks
-	==1076470==      possibly lost: 0 bytes in 0 blocks
-	==1076470==    still reachable: 0 bytes in 0 blocks
-	==1076470==         suppressed: 0 bytes in 0 blocks
-	==1076470== Rerun with --leak-check=full to see details of leaked memory
-
-So Valgrind gives me message when I try to write uninitialized bytes. And also it tells me that I forgot to
-free the memory. Let's fix that.
-
-	#include <stdlib.h>
-	#include <unistd.h>
-	#include <string.h>
-
-	int main(void)
-	{
-		char *hello;
-
-		hello = (char*)malloc(18);
-		strcpy(hello, "thanksforthefish\n\0");
-		write(1, hello, 18);
-		free(hello);
-		return (0);
-	}
-
-So let's try again.
-
-	==1914210== Memcheck, a memory error detector
-	==1914210== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-	==1914210== Using Valgrind-3.17.0 and LibVEX; rerun with -h for copyright info
-	==1914210== Command: ./a.out
-	==1914210==
-	thanksforthefish
-	==1914210==
-	==1914210== HEAP SUMMARY:
-	==1914210==     in use at exit: 0 bytes in 0 blocks
-	==1914210==   total heap usage: 1 allocs, 1 frees, 18 bytes allocated
-	==1914210==
-	==1914210== All heap blocks were freed -- no leaks are possible
-	==1914210==
-	==1914210== For lists of detected and suppressed errors, rerun with: -s
-	==1914210== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
-
-Looking great!
-
-Example from real life. I was wondering why valgrind complained about uninitialized values in our group project.
-
-	==842072== Conditional jump or move depends on uninitialised value(s)
-	==842072==    at 0x11DB3A: place_entity_to_ground (entity_move.c:58)
-	==842072==    by 0x11DDDF: entity_move (entity_move.c:80)
-	==842072==    by 0x11F366: update_entity (update_entities.c:60)
-	==842072==    by 0x11F4E1: update_entities (update_entities.c:84)
-	==842072==    by 0x150B84: update_world (launch_modules.c:33)
-	==842072==    by 0x150C87: launch_game_loop (launch_modules.c:53)
-	==842072==    by 0x10AAD6: main (main.c:72)
-	==842072==
-	==842072== Conditional jump or move depends on uninitialised value(s)
-	==842072==    at 0x1311BD: entity_gravity (gravity.c:62)
-	==842072==    by 0x11F26F: update_entity (update_entities.c:50)
-	==842072==    by 0x11F4E1: update_entities (update_entities.c:84)
-	==842072==    by 0x150B84: update_world (launch_modules.c:33)
-	==842072==    by 0x150C87: launch_game_loop (launch_modules.c:53)
-	==842072==    by 0x10AAD6: main (main.c:72)
-	==842072==
-
-So, I added line `printf("entity idx %d sprite idx %d\n", entity->idx, entity->sprite_idx);` to code, and valgrind prints those in between.
-
-	==842994== Memcheck, a memory error detector
-	==842994== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-	==842994== Using Valgrind-3.17.0 and LibVEX; rerun with -h for copyright info
-	==842994== Command: ./doom-nukem
-	==842994==
-	Raster queues created, and viewport initialized.
-	You chose: map_files/laalaa.DN
-	Verification successfull
-	mkdir: cannot create directory ‘temp’: File exists
-	entity idx 3 sprite idx -27
-	==842994== Conditional jump or move depends on uninitialised value(s)
-	==842994==    at 0x11DB5A: place_entity_to_ground (entity_move.c:58)
-	==842994==    by 0x11DDFF: entity_move (entity_move.c:80)
-	==842994==    by 0x11F386: update_entity (update_entities.c:60)
-	==842994==    by 0x11F501: update_entities (update_entities.c:84)
-	==842994==    by 0x150BCB: update_world (launch_modules.c:33)
-	==842994==    by 0x150CCE: launch_game_loop (launch_modules.c:53)
-	==842994==    by 0x10AAF6: main (main.c:72)
-	==842994==
-	entity idx 4 sprite idx -26
-	entity idx 3 sprite idx -27
-	entity idx 4 sprite idx -26
-	==842994== Conditional jump or move depends on uninitialised value(s)
-	==842994==    at 0x131204: entity_gravity (gravity.c:63)
-	==842994==    by 0x11F28F: update_entity (update_entities.c:50)
-	==842994==    by 0x11F501: update_entities (update_entities.c:84)
-	==842994==    by 0x150BCB: update_world (launch_modules.c:33)
-	==842994==    by 0x150CCE: launch_game_loop (launch_modules.c:53)
-	==842994==    by 0x10AAF6: main (main.c:72)
-	==842994==
-	entity idx 3 sprite idx -27
-	entity idx 4 sprite idx -26
-	entity idx 3 sprite idx -27
-	entity idx 4 sprite idx -26
-	entity idx 3 sprite idx -27
-	entity idx 4 sprite idx -26
-
-So, I could say that it happens only with one entity.
-Which led us to conclusion, that it was caused by one variable that was not initialized during startup.
-
-## Nifty Git Commands
-
-Command | Explanation
---------|--------
-`git checkout HEAD -- oops.c` | This will reset a single file from your HEAD. Nifty when you have made one change to a file that you don't want to push in a middle of a larger feature.
-`git restore oops.c` | Same, but this will restore file from your local git.
-`git remote rm [name]` | If you happen to work a school project, and you would like to remove the remote vogsphere address, you can do it by typing this command.
-`git remote -v` | This command lists all the remotes you have. When in doubt, [git](https://git-scm.com/docs/git-remote) it out.
-`git remote add origin git@github.com..` | You can add your repository's address here, and push to remote. Origin is the name of the remote location and address comes after it. Github has [excellent documentation](https://docs.github.com/en/get-started/getting-started-with-git/managing-remote-repositories) about this.
-`git push --set-upstream origin main` | On your first push, it's good to say that you are pushing to the origin remote, and the name of the upstream branch is main. If you just push, you will be greeted with this command.
-`git log` | list all the commits in the git history.
-`git checkout d3260c0e2` | This checkouts to the earlier commit in the current branch. You will be headless mode, so you can fool around. This is where I ended up when googling it. [How do I revert a git repository to a previous commit](https://stackoverflow.com/questions/4114095/how-do-i-revert-a-git-repository-to-a-previous-commit)
-`git checkout -b before-covid d3260c0e2` | Or you can create a new branch based on that earlier commit.
-`git checkout HEAD` | Going back to the head means no more fooling around, time to get some work done.
+Link | What
+-----|-----
+[Crash Course](https://www.youtube.com/user/crashcourse) | Tons of awesome animated courses initially founded by well known vlogbrothers. I've watched courses on history and media literacy.
+[Educative](https://educative.io) | Courses for many programming languages. Free 6 months from Github Student pack.
+[Lazy Foo SDL tutorial](http://lazyfoo.net/tutorials/SDL/index.php) | Great tutorial on SDL2. SDL2 can be used to create games and graphical interfaces for C projects
+[Automate the Boring Stuff with Python](https://automatetheboringstuff.com/) | Free ebook that teaches the very basics of python, great starting point for learning the language
+[Elements of AI](https://course.elementsofai.com/) | Does not contain any programming, but still a very useful course for learning what AI is and how it can be used in our lives
+[freeCodeCamp](https://www.freecodecamp.org/) | Very beginner friendly bootcamp for learning HTML, CSS, Javascript, data visualization and APIs. However it's a bit slow in my opinion, it's really made for people with no prior knowledge in coding
+[Tour of Go](https://tour.golang.org/welcome/1) | Offical Go tour
+[Go by Example](https://gobyexample.com/) | Short and useful Go examples
+[Build Web Application with Golang](https://astaxie.gitbooks.io/build-web-application-with-golang/content/en/) | Great e-book about writing web app in Go
+[Effective Go](https://golang.org/doc/effective_go.html) | Good to know about Go
+[LiveOverflow](https://www.youtube.com/channel/UClcE-kVhqyiHCcjYwcpfj9w) | Hacking, pentesting & reverse engineering explained in fun videos
+[OneLoneCoder](https://www.youtube.com/channel/UC-yuWVUplUJZvieEligKBkA) | Oldschool c++ guy doing game programming videos
+[Grasshopper](https://grasshopper.app/) | learn javascript
+[Udacity](https://www.udacity.com) | Courses on multiple tech subjects, including AI, Cloud Computing, Data Science, Blockchain Technology and many more.
+[One Month](https://onemonth.com/) | Multiple courses including Python, HMTL&CSS, Wordpress etc. Something to relax to when not that serious about stuff and just want to have general idea of language. Level: Really easy (free for a month as GitHub Student pack).
+[leetcode](https://leetcode.com/) | There are 1397  interview problems and so on.
+[Getting started with react hooks](https://www.vtnetzwelt.com/web/getting-started-with-react-hooks/) |  A great intro to react hooks.
+[Helsinki University Open Fullstack course](https://fullstackopen.com/en/) | Learn React, Redux, Node.js, MongoDB, and GraphQL in one go! This course will introduce you to modern JavaScript-based web development. The main focus is on building single page applications with ReactJS that use REST APIs built with Node.js.
+[Google PWA training](https://www.youtube.com/watch?v=psB_Pjwhbxo&list=PLNYkxOF6rcIB2xHBZ7opgc2Mv009X87Hh) | What is a PWA and why should you care? This is a course by google that introduces you to PWA's, client side caching and more.
+[The world's largest web developer site](https://www.w3schools.com/) | Good basic things with examples, how to get SQL database connection with PHP, javascript, HTML and CSS tutorials etc.
+[Helsinki University DevOps with Docker](https://devopswithdocker.com/) | DevOps course by University of Helsinki
