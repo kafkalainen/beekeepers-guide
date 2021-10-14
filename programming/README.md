@@ -1,5 +1,4 @@
-# Pointers on
-Explanations and memory rules about things
+## Explanations and memory rules about some basic programming concepts
 ### Pointers
 
 Allocated memory address of something, for example a string (char *string). Pointer points to the start of that memory address, so the first character of that string. Example of a double pointer would be char **array, which could point to an array of strings.
