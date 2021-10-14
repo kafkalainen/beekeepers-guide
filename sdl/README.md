@@ -22,7 +22,7 @@ Go to the directory, and do configure binary in the folder that had the tarball 
 
 	make -j8
 
-Next you will run `make -j8`, which optimizes SDL2 to the correct amount the cores, you have on your computer. You can list the number of cores that you have with `$(shell echo 2+$(shell cat /proc/cpuinfo | grep processor | wc -l) | bc)`
+Next you will run `make -j8`, which makes SDL2 install optimal to the amount the cores, you have on your computer. You can get tbe number required by using command `echo 2+$(cat /proc/cpuinfo | grep processor | wc -l) | bc`
 
 	make install
 
