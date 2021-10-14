@@ -117,3 +117,4 @@ Link | What
 [Google PWA training](https://www.youtube.com/watch?v=psB_Pjwhbxo&list=PLNYkxOF6rcIB2xHBZ7opgc2Mv009X87Hh) | What is a PWA and why should you care? This is a course by google that introduces you to PWA's, client side caching and more.
 [The world's largest web developer site](https://www.w3schools.com/) | Good basic things with examples, how to get SQL database connection with PHP, javascript, HTML and CSS tutorials etc.
 [Helsinki University DevOps with Docker](https://devopswithdocker.com/) | DevOps course by University of Helsinki
+[BSP algorithm](https://www.geeksforgeeks.org/binary-space-partitioning/)
