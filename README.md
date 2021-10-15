@@ -1,9 +1,9 @@
 # beekeepers-guide
-Hi, this is beekeeper's guide to install all necessary school stuff. Each chapter is broken down to program folders, where you will find README on the topic.
+Hi, this is beekeeper's guide to install all necessary school stuff. Each chapter is broken down to program folders, where you will find README on the topic. Most of these will not come in use, if you are working at the school. Most of the required programs are already installed on the school computers, and those are included in the subjects as well.
 
 ## For those who plan on using Windows
 
-For those who haven't already noticed, 42 School, is a Unix school. All the school projects are somewhat associated with Linux or OSX. School computers are Macintoshes. All the commands you will see in the courses are run either on Unix. So, if you insist on working on your own laptop, you will need to keep this in mind, why this or that command is not available in Windows. It will be much easier for you, if you just install a virtual computer on your laptop, or perhaps do a dual booting system. Linux in all it's distributions may seem intimidating at first, but once you get a hang of it, it's far more faster to get on track with all the projects.
+For those who haven't already noticed, 42 curriculum which Hive is using, is a Unix based. All the school projects are somewhat associated with Linux or OSX. School computers are Macintoshes. All the commands you will see in the courses are run in these environments. So, if you insist on working on your own laptop and using Windows, you will need to keep this in mind, why this or that command is not available in Windows. Also, exams are done on school computers. It will be much easier for you, if you just install a virtual computer on your laptop, or perhaps do a dual booting system, if you feel that Linux might be your choice. Linux in all it's distributions may seem intimidating at first, but once you get a hang of it, it's far more faster to get on track with all the projects.  You don't see 27" iMacs handed to student use everywhere, so take advantage of it. All in all, school is all about peer learning, and the best way to learn from your peers is to see them day by day at school.
 
 ## Package manager for OSX
 
@@ -79,6 +79,31 @@ Config | What it does
 -------|-----------
 (add-hook 'before-save-hook 'whitespace-cleanup) | This should take care of whitespace at the beginning of the file, end of lines and multiple empy lines at the end of the file.
 (setq backward-delete-char-untabify-method 'hungry) | You can change the emacs backspace key behaviour when deleting tab characters by adding this.
+
+## Vim tips
+You can create `.vimrc` file to your user home directory to make your vimming easier:
+Config | What it does
+-------|--------
+syntax on | adds colours to easier grasp what is a function etc.
+set tabstop=4 | sets tabulation to exactly 4 spaces long
+set number | sets row numbering on
+
+Commands | What it does
+---------|------------
+: | enter to menu
+:wq | write to the file and quit
+:q | quit
+:q! | quit and don't save
+i | input on
+v | visual on
+esc | exit from input or visual mode
+v + arrow keys | while visual mode is on, you can select rows of text.
+v + y | while visual mode is on you can copy or "yank" text.
+v + d | while visual mode is on, you can delete selected text by pressing d.
+p | put down the text you've copied.
+u | undo the stuff you've done.
+
+
 
 ## Links to interesting topics
 
