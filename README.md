@@ -41,7 +41,7 @@ This tells your `ssh-agent` program to hang in the keychain, so that is availabl
 
 From here onwards, it's silly to repeat what octocat has said. So, [check these out!](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account)
 
-## VSCode Shortcuts (originally posted to discord by )
+## VSCode Shortcuts
 
 Command | What it does
 --------|-------------
@@ -102,8 +102,6 @@ v + y | while visual mode is on you can copy or "yank" text.
 v + d | while visual mode is on, you can delete selected text by pressing d.
 p | put down the text you've copied.
 u | undo the stuff you've done.
-
-
 
 ## Links to interesting topics
 
