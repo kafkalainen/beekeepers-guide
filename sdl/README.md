@@ -1,4 +1,5 @@
-# How to install SDL2
+# How to install SDL2 on Linux
+Some of the school material requires that used graphics library is included as srcs in the repository. We approached this as so that SDL2 is added as tarball to the repository, and extracted to the folder. Since the files are under same makefile rules as rest of the project, you can clean and fclean the SDL2 away as well.
 
 1. Get most recent release of the SDL2 from:
 
@@ -6,9 +7,9 @@
 
 2. Unpack tarball with:
 
-	tar -xzf SDL2-2.0.14.tar.gz
+	tar -xzf SDL2-{version_number}.tar.gz
 
-3. Create a directory to root of your project:
+3. Create a directory to root of your project. Folder could be named to anything:
 
 	mkdir -p SDL2
 
@@ -33,7 +34,15 @@ Finally run `make install`, and that's it! Now you should have SDL2 libraries, t
 
 When compiling project that is using sdl2, it comes with sdl2-config binary. It has the libraries and compilation flags that SDL uses you will need to compile your program.
 
-	./SDL2/bin/sdl2-config --libs)
-	./SDL2/bin/sdl2-config --cflags)
+	./SDL2/bin/sdl2-config --libs
+	./SDL2/bin/sdl2-config --cflags
 
-You will also need to `#include` SDL header in the *.h file, to give your program access to the range of SDL functions.
+You will also need to `#include` SDL header in the .c file, to give your program access to the range of SDL functions.
+
+	#include "SDL2/include/SDL2/SDL.h"
+
+Example, you could compile main.c using SDL2 following.
+
+	gcc -Wall -Wextra -Werror $(./SDL2/bin/sdl2-config --cflags) main.c -L$(./SDL2/bin/sdl2-config --libs)
+
+Check, what sdl2-config command outputs, and you will be able to use it in your makefile rules.
