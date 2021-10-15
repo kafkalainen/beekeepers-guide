@@ -1,5 +1,5 @@
 # How to install SDL2 on Linux
-Some of the school material requires that used graphics library is included as srcs in the repository. We approached this as so that SDL2 is added as tarball to the repository, and extracted to the folder. Since the files are under same makefile rules as rest of the project, you can clean and fclean the SDL2 away as well.
+Some of the school material requires that used graphics library is included as srcs in the repository. We approached this as so that SDL2 is added as tarball to the repository, and extracted to the folder. Since the files are under same makefile rules as rest of the project, you can clean and fclean the SDL2 away as well. Also, this [is not the official guide](https://wiki.libsdl.org/Installation). Always question the best way to install. Check the documentation, make your own decisions, and work from there.
 
 1. Get most recent release of the SDL2 from:
 
