@@ -82,6 +82,7 @@ School is in English, and English is the lingua franca in coding world. So shoul
 	You need to start a new line after each curly bracket or end of control structure.
 
 [Consistency, code is harder to understand on multiple lines](https://softwareengineering.stackexchange.com/questions/251216/is-too-much-whitespace-a-bad-thing)
+
 [Difficulty of going to the end of the code](https://softwareengineering.stackexchange.com/questions/121555/why-is-trailing-whitespace-a-big-deal)
 
 	The asterisks that go with pointers must be stuck to variable names.
