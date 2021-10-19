@@ -88,3 +88,49 @@ School is in English, and English is the lingua franca in coding world. So shoul
 	The asterisks that go with pointers must be stuck to variable names.
 
 [A matter of preference](https://stackoverflow.com/questions/2660633/declaring-pointers-asterisk-on-the-left-or-right-of-the-space-between-the-type)
+
+	One single variable declaration per line.
+
+[Possibility of mixing up data types](https://wiki.sei.cmu.edu/confluence/display/c/DCL04-C.+Do+not+declare+more+than+one+variable+per+declaration)
+
+
+	Declaration and an initialisation cannot be on the same line, except for global
+	variables (when allowed), static variables, and constants.
+	Declarations must be at the beginning of a function.
+
+[In C89/C90, variables had to be declared at the start of the block](https://softwareengineering.stackexchange.com/questions/75039/why-declare-a-variable-in-one-line-and-assign-to-it-in-the-next)
+
+	In a function, you must place an empty line between variable declarations and the
+	remaining of the function. No other empty lines are allowed in a function.
+
+Unknown.
+
+	Multiple assignments are strictly forbidden.
+
+[Multiple assignments chain in assembly code?](https://stackoverflow.com/questions/19353686/multiple-assignment-in-one-line)
+
+	You may add a new line after an instruction or control structure, but you’ll have
+	to add an indentation with brackets or assignment operator. Operators must be at
+	the beginning of a line.
+
+Unknown.
+
+	Control structures (if, while..) must have braces, unless they contain a single line
+	or a single condition.
+
+Compiler also warns you about this:
+	main.c:8:2: error: this ‘if’ clause does not guard... [-Werror=misleading-indentation]
+		8 |  if (a < 2)
+		|  ^~
+	main.c:10:3: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+
+## II.3 Functions
+
+	A function can take 4 named parameters maximum
+
+>The ideal number of arguments for a function is zero (niladic). Next comes one (monadic), followed closely by two
+(dyadic). Three arguments (triadic) should be avoided where possible. More than three (polyadic) requires very special justification — and then shouldn’t be used anyway.
+
+> Clean Code: A Handbook of Agile Software Craftsmanship
+
+[More than 3 or 4 parameters is considered to be bad practice](https://softwareengineering.stackexchange.com/questions/145055/are-there-guidelines-on-how-many-parameters-a-function-should-accept)
