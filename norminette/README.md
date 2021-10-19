@@ -50,8 +50,6 @@ Take a look on following coding art article. [About naming](https://codingart.re
 
 School is in English, and English is the lingua franca in coding world. So should your code be written in English as well.
 
-[Why too many arguments to functions is bad](https://matheus.ro/2018/01/29/clean-code-avoid-many-arguments-functions/)
-
 	Using global variables that are not marked const and static is forbidden and is
 	considered a norm error, unless the project explicitly allows them.
 
@@ -134,3 +132,4 @@ Compiler also warns you about this:
 > Clean Code: A Handbook of Agile Software Craftsmanship
 
 [More than 3 or 4 parameters is considered to be bad practice](https://softwareengineering.stackexchange.com/questions/145055/are-there-guidelines-on-how-many-parameters-a-function-should-accept)
+[Why too many arguments to functions is bad](https://matheus.ro/2018/01/29/clean-code-avoid-many-arguments-functions/)
